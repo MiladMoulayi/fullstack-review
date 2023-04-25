@@ -10,6 +10,19 @@ const App = () => {
 
   const search = (term) => {
     console.log(`${term} was searched`);
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:1128/repos",
+      data: JSON.stringify({username: term}),
+      contentType: "application/json",
+      success: (data) => {
+        console.log('Search successful:', data);
+        // Update the repos state if needed, e.g., setRepos(data)
+      },
+      error: (err) => {
+        console.error('Error in search:', err);
+      }
+    });
   }
 
   return (

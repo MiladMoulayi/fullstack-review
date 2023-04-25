@@ -23,9 +23,11 @@ app.post('/repos', function (req, res) {
     if (err) {
       console.log('Error!');
     } else {
-      console.log({data});
+    console.log({data});
+    data.forEach(repo => save(repo));
     }
   })
+
   res.send('POST request to GitHub API');
 });
 

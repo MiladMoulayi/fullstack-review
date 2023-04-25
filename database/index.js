@@ -10,16 +10,17 @@ let repoSchema = mongoose.Schema({
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (repo) => {
-  repo = new Repo;
-  repo.save((err,result) => {
+let save = (repoData) => {
+  let repo = new Repo(repoData);
+  repo.save((err, result) => {
     if (err) {
       console.log(err);
     } else {
       console.log(result);
     }
   });
-}
+};
+
 
 
 module.exports.save = save;

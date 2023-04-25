@@ -25,8 +25,6 @@ const App = () => {
       data: JSON.stringify({ username: term }),
       contentType: "application/json",
       success: (data) => {
-        console.log('Search successful:', data);
-        console.log('Typeof data:', typeof data);
         setRepos(data);
       },
       error: (err) => {

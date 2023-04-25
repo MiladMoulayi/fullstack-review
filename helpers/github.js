@@ -41,7 +41,7 @@ let getReposByUsername = (username, cb) => {
 
 const fetchTopRepos = async (cb) => {
   try {
-    const repos = await Repo.find().sort({ stargazers_count: -1 }).limit(25).exec();
+    const repos = await Repo.find().sort({ updatedAt: -1 }).limit(25).exec();
     if (cb) {
       cb(null, repos);
     } else {

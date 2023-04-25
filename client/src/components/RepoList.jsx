@@ -1,26 +1,29 @@
 import React from 'react';
 
 const RepoList = ({ repos }) => {
-  console.log('RepoList received repos:', repos);
-  console.log('Typeof repos:', typeof repos);
 
-  if (typeof repos === 'string') {
-    repos = JSON.parse(repos);
-  }
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`;
+  };
 
   return(
 
     <div>
       <h4> Repo List Component </h4>
       There are {repos.length} repos.
-      <ul>
+      <ol>
         {repos.map((repo) => (
           <li key={repo._id}>
-            <a href={repo.repoURL}>{repo.repoName}</a> by{' '}
-            <a href={repo.userURL}>{repo.user}</a> - Updated at {repo.updatedAt}
+            <ul>
+              <li><a href={repo.repoURL} target="_blank">{repo.repoName}</a></li>
+              <li>by{' '}<a href={repo.userURL} target="_blank">{repo.user}</a></li>
+              <li>Updated {formatDate(repo.updatedAt)}</li>
+            </ul>
+            <p></p>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
 
   )

@@ -5,7 +5,9 @@ let repoSchema = mongoose.Schema({
   repoName: String,
   user: String,
   repoURL: String,
-  userURL: String
+  userURL: String,
+  createdAt: String,
+  updatedAt: String,
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
